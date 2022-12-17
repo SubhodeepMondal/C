@@ -1,0 +1,37 @@
+# Project: OS_process_scheduling
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
+WINDRES  = windres.exe
+OBJ      = SJF.o priority_scheduling.o round_robin.o round_robin_2.o
+LINKOBJ  = SJF.o priority_scheduling.o round_robin.o round_robin_2.o
+LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -g3
+INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = OS_process_scheduling.exe
+CXXFLAGS = $(CXXINCS) -g3
+CFLAGS   = $(INCS) -g3
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+SJF.o: SJF.c
+	$(CC) -c SJF.c -o SJF.o $(CFLAGS)
+
+priority_scheduling.o: priority_scheduling.c
+	$(CC) -c priority_scheduling.c -o priority_scheduling.o $(CFLAGS)
+
+round_robin.o: round_robin.c
+	$(CC) -c round_robin.c -o round_robin.o $(CFLAGS)
+
+round_robin_2.o: round_robin_2.c
+	$(CC) -c round_robin_2.c -o round_robin_2.o $(CFLAGS)
